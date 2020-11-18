@@ -2,9 +2,9 @@
 {
     public class ReservationService
     {
-        public bool Reserver()
+        public (bool accepte, int prixAPayer, int txRemplissage) Reserver()
         {
-            return false;
+            return (true, 0,0);
         }
     }
 }
