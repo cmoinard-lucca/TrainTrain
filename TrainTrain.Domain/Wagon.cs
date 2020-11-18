@@ -1,4 +1,6 @@
-﻿namespace TrainTrain.Domain
+﻿using System;
+
+namespace TrainTrain.Domain
 {
     public class Wagon
     {
@@ -6,7 +8,14 @@
         public int Occupancy { get; private set; } = 0;
 
         public void AddPassengers(int count)
-            => Occupancy += count;
+        {
+            if (Occupancy + count > Capacity)
+            {
+                throw new ArgumentException("Wagon capacity exceeded");
+            }
+            
+            Occupancy += count;
+        }
 
         public decimal OccupancyRate
             => (decimal)Occupancy / Capacity * 100;

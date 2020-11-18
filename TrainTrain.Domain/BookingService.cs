@@ -4,7 +4,7 @@
     {
         public BookingResult Book(Wagon wagon, int requestedBookingCount)
         {
-            if (!CanBook(wagon))
+            if (!CanBook(wagon, requestedBookingCount))
             {
                 return new BookingResult
                 {
@@ -32,6 +32,7 @@
             }
         }
         
-        private bool CanBook(Wagon wagon) => wagon.Occupancy < 70;
+        private bool CanBook(Wagon wagon, int requestBookingCount)
+            => wagon.Occupancy + requestBookingCount <= 70;
     }
 }

@@ -21,3 +21,9 @@ Scénario: Wagon rempli avec 70 places, réservation pour x personnes
 	Et on a encaissé 0 euros
 	Et le wagon est occupé à 70%
 
+Scénario: Wagon rempli avec 65 places, réservation pour 10 personnes
+	Etant donné un wagon avec 65 réservations
+	Quand 10 réservations sont demandées
+	Alors la réservation est refusée
+	Et on a encaissé 0 euros
+	Et le wagon est occupé à 65%
