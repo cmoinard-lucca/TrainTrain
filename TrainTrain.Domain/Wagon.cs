@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrainTrain.Domain
+﻿namespace TrainTrain.Domain
 {
     public class Wagon
     {
@@ -14,9 +10,5 @@ namespace TrainTrain.Domain
 
         public decimal OccupancyRate
             => (decimal)Occupancy / Capacity * 100;
-
-        public Wagon(
-        {
-        }
     }
 }

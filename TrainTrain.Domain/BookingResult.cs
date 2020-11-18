@@ -2,7 +2,7 @@
 {
     public class BookingResult
     {
-        public bool Success { get; set; }
+        public bool IsSuccess { get; set; }
         public decimal Amount { get; set; }
     }
 }

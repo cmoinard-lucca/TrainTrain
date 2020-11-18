@@ -37,8 +37,15 @@ namespace TrainTrain.Domain.Tests.Steps
         [Then(@"la réservation est acceptée")]
         public void AlorsLaReservationEstAcceptee()
         {
-            _context.BookingResult.Success
+            _context.BookingResult.IsSuccess
                 .Should().BeTrue();
+        }
+        
+        [Then(@"la réservation est refusée")]
+        public void AlorsLaReservationEstRefusee()
+        {
+            _context.BookingResult.IsSuccess
+                .Should().BeFalse();
         }
 
         [Then(@"on a encaissé (.*) euros")]

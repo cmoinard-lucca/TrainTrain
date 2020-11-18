@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrainTrain.Domain
+﻿namespace TrainTrain.Domain
 {
     public class BookingService
     {
         public BookingResult Book(Wagon wagon, int requestedBookingCount)
         {
+            if (!CanBook(wagon))
+            {
+                return new BookingResult
+                {
+                    IsSuccess = false
+                };
+            }
 
             wagon.AddPassengers(requestedBookingCount);
 
@@ -15,7 +18,7 @@ namespace TrainTrain.Domain
             {
                 return new BookingResult
                 {
-                    Success = true,
+                    IsSuccess = true,
                     Amount = 50,
                 };
             }
@@ -23,10 +26,12 @@ namespace TrainTrain.Domain
             {
                 return new BookingResult
                 {
-                    Success = true,
+                    IsSuccess = true,
                     Amount = 200,
                 };
             }
         }
+        
+        private bool CanBook(Wagon wagon) => wagon.Occupancy < 70;
     }
 }
