@@ -21,16 +21,17 @@ namespace TrainTrain.Domain.Tests.Steps
         }
 
         [Given(@"un wagon avec (.*) réservations")]
-        public void SoitUnWagonAvecReservations(int bookingCount)
+        public void SoitUnWagonAvecReservations(int currentOccupancy)
         {
-            _context.BookingCount = bookingCount;
+            _context.Wagon = new Wagon();
+            _context.Wagon.AddPassengers(currentOccupancy);
         }
 
         [When(@"(.*) réservation est demandée")]
         [When(@"(.*) réservations sont demandées")]
-        public void QuandReservationEstDemandee(int bookingCount)
+        public void QuandReservationEstDemandee(int requestedBookingCount)
         {
-            _context.BookingResult = _bookingService.Book(bookingCount);
+            _context.BookingResult = _bookingService.Book(_context.Wagon, requestedBookingCount);
         }
 
         [Then(@"la réservation est acceptée")]
@@ -48,9 +49,9 @@ namespace TrainTrain.Domain.Tests.Steps
         }
 
         [Then(@"le wagon est occupé à (.*)%")]
-        public void AlorsLeWagonEstOccupeAPourcent(int occupancyRate)
+        public void AlorsLeWagonEstOccupeAPourcent(decimal occupancyRate)
         {
-            _context.BookingResult.OccupancyRate
+            _context.Wagon.OccupancyRate
                 .Should().Be(occupancyRate);
         }
     }

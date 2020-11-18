@@ -13,3 +13,4 @@ Scénario: Wagon rempli à 25 places, réservation pour 4 personnes
 	Alors la réservation est acceptée
 	Et on a encaissé 200 euros
 	Et le wagon est occupé à 29%
+

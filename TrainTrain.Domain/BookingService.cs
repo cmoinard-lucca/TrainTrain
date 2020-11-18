@@ -6,15 +6,17 @@ namespace TrainTrain.Domain
 {
     public class BookingService
     {
-        public BookingResult Book(int nombre)
+        public BookingResult Book(Wagon wagon, int requestedBookingCount)
         {
-            if (nombre == 1)
+
+            wagon.AddPassengers(requestedBookingCount);
+
+            if (requestedBookingCount == 1)
             {
                 return new BookingResult
                 {
                     Success = true,
                     Amount = 50,
-                    OccupancyRate = 1
                 };
             }
             else
@@ -23,10 +25,8 @@ namespace TrainTrain.Domain
                 {
                     Success = true,
                     Amount = 200,
-                    OccupancyRate = 29
                 };
             }
-
         }
     }
 }

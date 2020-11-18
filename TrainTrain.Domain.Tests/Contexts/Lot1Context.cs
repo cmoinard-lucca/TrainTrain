@@ -2,7 +2,7 @@
 {
     public class Lot1Context
     {
-        public int BookingCount { get; set; }
         public BookingResult BookingResult { get; internal set; }
+        public Wagon Wagon { get; set; }
     }
 }
