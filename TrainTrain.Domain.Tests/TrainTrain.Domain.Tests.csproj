@@ -13,6 +13,9 @@
 
     <ItemGroup>
       <SpecFlowFeatureFiles Remove="Features\Add.feature" />
+      <SpecFlowFeatureFiles Update="Features\Lot2.feature">
+        <CodeBehindFile>Features\Lot1.feature.cs</CodeBehindFile>
+      </SpecFlowFeatureFiles>
     </ItemGroup>
 
     <ItemGroup>

@@ -1,10 +1,15 @@
-﻿namespace TrainTrain.Domain
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace TrainTrain.Domain
 {
     public class BookingService
     {
-        public BookingResult Book(Wagon wagon, int requestedBookingCount)
+        public BookingResult Book(IReadOnlyCollection<Wagon> wagons, int requestedBookingCount)
         {
-            if (!CanBook(wagon, requestedBookingCount))
+            var wagon = wagons.FirstOrDefault(x => CanBook(x, requestedBookingCount));
+
+            if (wagon == null)
             {
                 return new BookingResult
                 {
