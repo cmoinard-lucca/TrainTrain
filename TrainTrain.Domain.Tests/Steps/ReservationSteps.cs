@@ -20,11 +20,17 @@ namespace TrainTrain.Domain.Tests.Steps
         {
         }
 
-        [When(@"je réserve (.*) place")]
-        public void QuandJeReservePlace(int p0)
+        [Given(@"le wagon a (.*) places? prises?")]
+        public void SoitLeWagonAPlacesPrises(int placesPrises)
+        {
+            _reservationContext.PlacesPrises = placesPrises;
+        }
+
+        [When(@"je réserve (.*) places?")]
+        public void QuandJeReservePlace(int placesAReserver)
         {
             (_reservationContext.ReservationAcceptee, _reservationContext.PrixAPayer, _reservationContext.TauxDeRemplissage) 
-                = _reservationService.Reserver();
+                = _reservationService.Reserver(_reservationContext.PlacesPrises, placesAReserver);
         }
 
         [Then(@"la réservation est acceptée")]

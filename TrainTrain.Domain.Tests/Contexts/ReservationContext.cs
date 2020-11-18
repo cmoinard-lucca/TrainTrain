@@ -2,7 +2,7 @@
 {
     public class ReservationContext
     {
-        public int PlacesLibres { get; set; }
+        public int PlacesPrises { get; set; }
 
         public bool ReservationAcceptee { get; set; }
 
