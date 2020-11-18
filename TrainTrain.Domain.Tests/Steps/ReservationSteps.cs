@@ -9,12 +9,15 @@ namespace TrainTrain.Domain.Tests.Steps
     {
         private readonly ReservationService _reservationService;
         private readonly ReservationContext _reservationContext;
+        private readonly Wagon _wagon;
 
         public ReservationSteps(ReservationContext scenarioContext)
         {
-            _reservationService = new ReservationService();
+            _wagon = new Wagon();
+            _reservationService = new ReservationService(_wagon);
             _reservationContext = scenarioContext;
         }
+
         [Given(@"un wagon vide")]
         public void SoitUnWagonVide()
         {
@@ -23,26 +26,22 @@ namespace TrainTrain.Domain.Tests.Steps
         [Given(@"le wagon a (.*) places? prises?")]
         public void SoitLeWagonAPlacesPrises(int placesPrises)
         {
-            _reservationContext.PlacesPrises = placesPrises;
+            _wagon.NombreDePlacesPrises = placesPrises;
         }
 
         [When(@"je réserve (.*) places?")]
         public void QuandJeReservePlace(int placesAReserver)
         {
-            (_reservationContext.ReservationAcceptee, _reservationContext.PrixAPayer, _reservationContext.TauxDeRemplissage) 
+            (_reservationContext.ReservationAcceptee, _reservationContext.PrixAPayer,
+                    _reservationContext.TauxDeRemplissage)
                 = _reservationService.Reserver(placesAReserver);
         }
 
-        [Then(@"la réservation est acceptée")]
-        public void AlorsLaReservationEstAcceptee()
+        [Then(@"la réservation est (acceptée|refusée)")]
+        public void AlorsLaReservationEstAcceptee(string etat)
         {
-            Assert.True(_reservationContext.ReservationAcceptee);
-        }
-
-        [Then(@"la réservation est refusée")]
-        public void AlorsLaReservationEstRefusee()
-        {
-            Assert.False(_reservationContext.ReservationAcceptee);
+            if (etat == "acceptée") Assert.True(_reservationContext.ReservationAcceptee);
+            else Assert.False(_reservationContext.ReservationAcceptee);
         }
 
         [Then(@"le prix à payer est de (.*)€")]

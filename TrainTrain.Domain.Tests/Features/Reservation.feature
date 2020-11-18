@@ -18,3 +18,16 @@ Scénario: Remplissage de 70% max
     Etant donné que le wagon a 70 places prises 
     Quand je réserve 1 place
     Alors la réservation est refusée
+    Et le remplissage est de 70%
+
+Plan du scénario: La reservation d'un groupe est refusée si elle fait dépasser les 70% de remplissage
+    Etant donné que le wagon a <remplissage> places prises
+    Quand je réserve <placesAReserver> places
+    Alors la réservation est refusée
+    Et le remplissage est de <remplissage>%
+    
+    Exemples:
+        |placesAReserver|remplissage|
+        |10             |65         |
+        |50             |25         |
+        |2              |69         |

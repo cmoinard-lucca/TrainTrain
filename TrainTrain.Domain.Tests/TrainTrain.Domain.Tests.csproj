@@ -24,6 +24,9 @@
       <Compile Update="Features\Add.feature.cs">
         <DependentUpon>Add.feature</DependentUpon>
       </Compile>
+      <Compile Update="Features\Reservation.feature.cs">
+        <DependentUpon>Reservation.feature</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
