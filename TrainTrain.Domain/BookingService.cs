@@ -8,12 +8,25 @@ namespace TrainTrain.Domain
     {
         public BookingResult Book(int nombre)
         {
-            return new BookingResult
+            if (nombre == 1)
             {
-                Success = true,
-                Amount = 50,
-                OccupancyRate = 1
-            };
+                return new BookingResult
+                {
+                    Success = true,
+                    Amount = 50,
+                    OccupancyRate = 1
+                };
+            }
+            else
+            {
+                return new BookingResult
+                {
+                    Success = true,
+                    Amount = 200,
+                    OccupancyRate = 29
+                };
+            }
+
         }
     }
 }
