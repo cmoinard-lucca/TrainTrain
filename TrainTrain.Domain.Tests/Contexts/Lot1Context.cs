@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrainTrain.Domain.Tests.Contexts
+﻿namespace TrainTrain.Domain.Tests.Contexts
 {
     public class Lot1Context
     {

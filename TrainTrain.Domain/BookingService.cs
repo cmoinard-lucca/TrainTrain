@@ -12,7 +12,7 @@ namespace TrainTrain.Domain
             {
                 Success = true,
                 Amount = 50,
-                OccupancyPercentage = 1
+                OccupancyRate = 1
             };
         }
     }
