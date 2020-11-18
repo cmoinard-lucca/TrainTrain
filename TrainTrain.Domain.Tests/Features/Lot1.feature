@@ -21,9 +21,15 @@ Scénario: Wagon rempli avec 70 places, réservation pour x personnes
 	Et on a encaissé 0 euros
 	Et le wagon est occupé à 70%
 
-Scénario: Wagon rempli avec 65 places, réservation pour 10 personnes
-	Etant donné un wagon avec 65 réservations
-	Quand 10 réservations sont demandées
+Plan du scénario: Wagon non plein, réservation excédant le seuil de 70%
+	Etant donné un wagon avec <occupation> réservations
+	Quand <nbReservations> réservations sont demandées
 	Alors la réservation est refusée
 	Et on a encaissé 0 euros
-	Et le wagon est occupé à 65%
+	Et le wagon est occupé à <occupation>%
+
+	Exemples:
+		| occupation | nbReservations |
+		| 65         | 10             |
+		| 20         | 60             |
+		| 69         | 2              |
