@@ -13,3 +13,8 @@ Scénario: Reservation de 4 personnes dans un wagon avec 25 places prises
     Alors la réservation est acceptée
     Et le prix à payer est de 200€
     Et le remplissage est de 29%
+
+Scénario: Remplissage de 70% max
+    Etant donné que le wagon a 70 places prises 
+    Quand je réserve 1 place
+    Alors la réservation est refusée

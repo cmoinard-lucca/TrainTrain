@@ -30,13 +30,19 @@ namespace TrainTrain.Domain.Tests.Steps
         public void QuandJeReservePlace(int placesAReserver)
         {
             (_reservationContext.ReservationAcceptee, _reservationContext.PrixAPayer, _reservationContext.TauxDeRemplissage) 
-                = _reservationService.Reserver(_reservationContext.PlacesPrises, placesAReserver);
+                = _reservationService.Reserver(placesAReserver);
         }
 
         [Then(@"la réservation est acceptée")]
         public void AlorsLaReservationEstAcceptee()
         {
             Assert.True(_reservationContext.ReservationAcceptee);
+        }
+
+        [Then(@"la réservation est refusée")]
+        public void AlorsLaReservationEstRefusee()
+        {
+            Assert.False(_reservationContext.ReservationAcceptee);
         }
 
         [Then(@"le prix à payer est de (.*)€")]
